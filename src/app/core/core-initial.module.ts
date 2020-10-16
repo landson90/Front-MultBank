@@ -8,7 +8,9 @@ import { SignModule } from './sign-in/sign.module';
   ],
   imports: [
     CommonModule,
-    SignModule
-  ]
+    SignModule,
+
+  ],
+  providers: [],
 })
 export class CoreInitialModule { }
