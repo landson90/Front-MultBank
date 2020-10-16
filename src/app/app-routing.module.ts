@@ -11,16 +11,17 @@ const routes: Routes = [
   {
     path: "",
     component: SignInComponent,
-
+    canActivate: [LonginGuard]
   },
   {
     path: "sung-up",
     component: SignUpComponent,
-
+    canActivate: [LonginGuard]
   },
   {
     path: "home",
     component: HomeComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
