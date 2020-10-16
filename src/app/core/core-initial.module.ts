@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignInComponent } from './sign-in/sign-in/sign-in.component';
-import { SignUpComponent } from './sign-in/sign-up/sign-up.component';
-
-
+import { SignModule } from './sign-in/sign.module';
 
 @NgModule({
   declarations: [
-    SignInComponent,
-    SignUpComponent
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SignModule
   ]
 })
 export class CoreInitialModule { }
