@@ -7,6 +7,9 @@ import { CoreInitialModule } from './core/core-initial.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponenteInitialModule } from './componente/componente-initial.module';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,7 @@ import { ComponenteInitialModule } from './componente/componente-initial.module'
     AppRoutingModule,
     HttpClientModule,
     CoreInitialModule,
-    ComponenteInitialModule
+    ComponenteInitialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

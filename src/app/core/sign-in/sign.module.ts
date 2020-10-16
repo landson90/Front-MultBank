@@ -5,7 +5,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateInitialModule } from './../../templates/template-initial.module';
 
-
 @NgModule({
   declarations: [
     SignInComponent,
@@ -15,7 +14,7 @@ import { TemplateInitialModule } from './../../templates/template-initial.module
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TemplateInitialModule
+    TemplateInitialModule,
   ]
 })
 export class SignModule { }

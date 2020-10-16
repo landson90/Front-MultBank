@@ -13,35 +13,54 @@
     <div class="row">
       <div class="col-md-4 login-sec">
         <h2 class="text-center">MultBank - Criando Conta</h2>
-        <form class="login-form">
+        <form class="login-form" [formGroup]="orderForm" #form="ngForm">
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Nome</label>
-            <input type="text" class="form-control" placeholder="">
-
+            <input type="text" class="form-control" placeholder="" formControlName="nome"
+              [ngClass]="{'is-invalid': orderForm.get('nome').errors?.required}">
+            <app-v-message
+              *ngIf="orderForm.get('nome').errors?.required"
+              text="Campo nome é necessário">
+            </app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">E-mail</label>
-            <input type="email" class="form-control" placeholder="">
+            <input type="email" class="form-control" placeholder="" formControlName="email"
+              [ngClass]="{'is-invalid': orderForm.get('email').errors?.required}">
+            <app-v-message *ngIf="orderForm.get('email').errors?.required" text="Campo email é necessário">
+            </app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-            <input type="password" class="form-control" placeholder="">
+            <input type="password" class="form-control" placeholder="" formControlName="password"
+              [ngClass]="{'is-invalid': orderForm.get('password').errors?.required}">
+            <app-v-message *ngIf="orderForm.get('password').errors?.required" text="Campo password é necessário">
+            </app-v-message>
+            <app-v-message *ngIf="orderForm.get('password').errors?.max"
+              text="Campo password deve entre 6 e 11 digitos"></app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">CPF</label>
-            <input type="text" class="form-control" placeholder="">
+            <input type="text" class="form-control" formControlName="cpf"
+              [ngClass]="{'is-invalid': orderForm.get('cpf').errors?.required}">
+            <app-v-message *ngIf="orderForm.get('cpf').errors?.required" text="Campo cpf é necessário"></app-v-message>
+            <app-v-message *ngIf="orderForm.get('cpf').errors?.maxlength" text="Campo cpf deve conter 11 digitos">
+            </app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">Data Nascimento</label>
-            <input type="text" class="form-control" placeholder="">
+            <input type="date" class="form-control" placeholder="" formControlName="dateOfBirth"
+              [ngClass]="{'is-invalid': orderForm.get('dateOfBirth').errors?.required}">
+            <app-v-message *ngIf="orderForm.get('dateOfBirth').errors?.required"
+              text="Campo data Nascimento é necessário"></app-v-message>
           </div>
           <div class="form-check">
-            <button type="submit" class="btn btn-login float-right">Submit</button>
+            <button type="button" class="btn btn-login float-right" (click)="createClientUser()">Submit</button>
           </div>
 
         </form>
         <div class="copy-text">
-          <a (click)="singIn()" >Voltar</a>
+          <a (click)="singIn()">Voltar</a>
         </div>
       </div>
       <div class="col-md-8 banner-sec">
@@ -59,4 +78,4 @@
 
         </div>
       </div>
-</div>
+    </div>
