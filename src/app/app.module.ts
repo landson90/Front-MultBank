@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreInitialModule } from './core/core-initial.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RequestInterceptor } from './core/Interceptor/request-interceptor';
-import { VMessageComponent } from './templates/error/v-message/v-message.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponenteInitialModule } from './componente/componente-initial.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,9 @@ import { VMessageComponent } from './templates/error/v-message/v-message.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreInitialModule,
-    HttpClientModule
+    ComponenteInitialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

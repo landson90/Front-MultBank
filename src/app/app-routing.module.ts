@@ -1,5 +1,8 @@
+import { LonginGuard } from './core/guard-router/login/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './componente/home/home/home.component';
+import { AuthGuard } from './core/guard-router/auth/auth.guard';
 import { SignInComponent } from './core/sign-in/sign-in.component';
 import { SignUpComponent } from './core/sign-in/sign-up/sign-up.component';
 
@@ -7,11 +10,17 @@ import { SignUpComponent } from './core/sign-in/sign-up/sign-up.component';
 const routes: Routes = [
   {
     path: "",
-    component: SignInComponent
+    component: SignInComponent,
+
   },
   {
     path: "sung-up",
-    component: SignUpComponent
+    component: SignUpComponent,
+
+  },
+  {
+    path: "home",
+    component: HomeComponent,
   }
 ];
 
