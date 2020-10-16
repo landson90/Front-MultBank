@@ -10,8 +10,6 @@ import { ClientUser } from 'src/app/models/client-user';
 })
 export class UserService {
 
-  private userSebject = new BehaviorSubject<UserClient>(null);
-
   constructor(
     private tokenService: TokenService,
     private clientUserService: ClientUserService
@@ -20,13 +18,12 @@ export class UserService {
   private setToken(token: string) {
      this.tokenService.setToken(token);
    }
-   getUser() {
-     return this.userSebject.asObservable();
-   }
+
    logout() {
      this.tokenService.removeToken();
-     this.userSebject.next(null);
+     this.logout();
    }
+
    isLogin() {
      return this.tokenService.hasToken();
    }
