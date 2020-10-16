@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'src/app/models/auth';
+import { AuthUserService } from 'src/app/service/auth-user/auth-user.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuild: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private authUserService: AuthUserService
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +44,9 @@ export class SignInComponent implements OnInit {
   login() {
    const auth = this.orderFrom.getRawValue() as Auth;
    this.authService.isLogin(auth)
-       .subscribe((resp) => {console.log(resp)})
+       .subscribe((resp) => {
+          this.authUserService.setToken(JSON.stringify(resp))
+       })
 
   }
 
