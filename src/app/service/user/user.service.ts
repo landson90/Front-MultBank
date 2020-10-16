@@ -21,7 +21,7 @@ export class UserService {
 
    logout() {
      this.tokenService.removeToken();
-     this.logout();
+     this.clientUserService.isRemoveClient();
    }
 
    isLogin() {

@@ -22,4 +22,7 @@ export class ClientUserService {
   logout() {
     this.userSebject.next(null);
   }
+  isRemoveClient() {
+    window.localStorage.removeItem(CLIENTE);
+  }
 }
