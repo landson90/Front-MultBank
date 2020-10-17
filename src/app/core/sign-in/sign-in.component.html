@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-4 login-sec">
         <h2 class="text-center">MultBank</h2>
-        <form class="login-form" [formGroup]="orderFrom">
+        <form class="login-form" [formGroup]="orderFrom" #form="ngForm" (ngSubmit)="login()">
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Username</label>
             <input
@@ -20,10 +20,10 @@
               class="form-control"
               placeholder=""
               formControlName="email"
-              [ngClass]="{'is-invalid': orderFrom.get('email').errors?.required}"
+              [ngClass]="{'is-invalid': orderFrom.get('email').errors?.required && (form.submitted || orderFrom.get('email').touched)}"
               >
               <app-v-message
-              *ngIf="orderFrom.get('email').errors?.required"
+              *ngIf="orderFrom.get('email').errors?.required && (form.submitted || orderFrom.get('email').touched)"
               text="O email do usuário é necessário"></app-v-message>
           </div>
 
@@ -34,10 +34,10 @@
               class="form-control"
               placeholder=""
               formControlName="password"
-              [ngClass]="{'is-invalid': orderFrom.get('password').errors?.required}"
+              [ngClass]="{'is-invalid': orderFrom.get('password').errors?.required && (form.submitted || orderFrom.get('password').touched)}"
               >
               <app-v-message
-              *ngIf="orderFrom.get('password').errors?.required"
+              *ngIf="orderFrom.get('password').errors?.required && (form.submitted || orderFrom.get('password').touched)"
               text="O password do usuário é necessário"></app-v-message>
           </div>
 
@@ -48,9 +48,9 @@
               <small>Remember Me</small>
             </label>
             <button
-              type="button"
+              type="submit"
               class="btn btn-login float-right"
-              (click)="login()" >Submit</button>
+               >Submit</button>
           </div>
 
         </form>
