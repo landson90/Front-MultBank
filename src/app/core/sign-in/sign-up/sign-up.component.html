@@ -13,49 +13,49 @@
     <div class="row">
       <div class="col-md-4 login-sec">
         <h2 class="text-center">MultBank - Criando Conta</h2>
-        <form class="login-form" [formGroup]="orderForm" #form="ngForm">
+        <form class="login-form" [formGroup]="orderForm" #form="ngForm" (ngSubmit)="createClientUser()">
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Nome</label>
             <input type="text" class="form-control" placeholder="" formControlName="nome"
-              [ngClass]="{'is-invalid': orderForm.get('nome').errors?.required}">
+              [ngClass]="{'is-invalid': orderForm.get('nome').errors?.required && (form.submitted || orderForm.get('nome').touched)}">
             <app-v-message
-              *ngIf="orderForm.get('nome').errors?.required"
+              *ngIf="orderForm.get('nome').errors?.required && (form.submitted || orderForm.get('nome').touched)"
               text="Campo nome é necessário">
             </app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">E-mail</label>
             <input type="email" class="form-control" placeholder="" formControlName="email"
-              [ngClass]="{'is-invalid': orderForm.get('email').errors?.required}">
-            <app-v-message *ngIf="orderForm.get('email').errors?.required" text="Campo email é necessário">
+              [ngClass]="{'is-invalid': orderForm.get('email').errors?.required  && (form.submitted || orderForm.get('email').touched)}">
+            <app-v-message *ngIf="orderForm.get('email').errors?.required  && (form.submitted || orderForm.get('email').touched)" text="Campo email é necessário">
             </app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">Password</label>
             <input type="password" class="form-control" placeholder="" formControlName="password"
-              [ngClass]="{'is-invalid': orderForm.get('password').errors?.required}">
-            <app-v-message *ngIf="orderForm.get('password').errors?.required" text="Campo password é necessário">
+              [ngClass]="{'is-invalid': orderForm.get('password').errors?.required && (form.submitted || orderForm.get('password').touched)}">
+            <app-v-message *ngIf="orderForm.get('password').errors?.required && (form.submitted || orderForm.get('password').touched)" text="Campo password é necessário">
             </app-v-message>
-            <app-v-message *ngIf="orderForm.get('password').errors?.max"
-              text="Campo password deve entre 6 e 11 digitos"></app-v-message>
+            <app-v-message *ngIf="orderForm.get('password').errors?.max && (form.submitted || orderForm.get('password').touched)"
+              text="Campo password deve entre 6 e 11 digitos " ></app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">CPF</label>
             <input type="text" class="form-control" formControlName="cpf"
-              [ngClass]="{'is-invalid': orderForm.get('cpf').errors?.required}">
-            <app-v-message *ngIf="orderForm.get('cpf').errors?.required" text="Campo cpf é necessário"></app-v-message>
-            <app-v-message *ngIf="orderForm.get('cpf').errors?.maxlength" text="Campo cpf deve conter 11 digitos">
+              [ngClass]="{'is-invalid': orderForm.get('cpf').errors?.required && (form.submitted || orderForm.get('cpf').touched)} ">
+            <app-v-message *ngIf="orderForm.get('cpf').errors?.required && (form.submitted || orderForm.get('cpf').touched)" text="Campo cpf é necessário"></app-v-message>
+            <app-v-message *ngIf="orderForm.get('cpf').errors?.maxlength && (form.submitted || orderForm.get('cpf').touched)" text="Campo cpf deve conter 11 digitos">
             </app-v-message>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">Data Nascimento</label>
             <input type="date" class="form-control" placeholder="" formControlName="dateOfBirth"
-              [ngClass]="{'is-invalid': orderForm.get('dateOfBirth').errors?.required}">
-            <app-v-message *ngIf="orderForm.get('dateOfBirth').errors?.required"
+              [ngClass]="{'is-invalid': orderForm.get('dateOfBirth').errors?.required && (form.submitted || orderForm.get('dateOfBirth').touched)}">
+            <app-v-message *ngIf="orderForm.get('dateOfBirth').errors?.required && (form.submitted || orderForm.get('dateOfBirth').touched)"
               text="Campo data Nascimento é necessário"></app-v-message>
           </div>
           <div class="form-check">
-            <button type="button" class="btn btn-login float-right" (click)="createClientUser()">Submit</button>
+            <button type="submit" class="btn btn-login float-right" >Submit</button>
           </div>
 
         </form>
