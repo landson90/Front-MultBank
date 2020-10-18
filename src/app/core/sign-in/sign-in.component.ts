@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'src/app/models/auth';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { ModalAlertService } from 'src/app/service/modal-alert/modal-alert.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,6 +18,7 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private formBuild: FormBuilder,
     private authService: AuthService,
+    private alertModalService: ModalAlertService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class SignInComponent implements OnInit {
         '',
         [Validators.required,
         Validators.min(6),
-        Validators.max(11)]
+       ]
       ]
     })
 
@@ -42,9 +44,13 @@ export class SignInComponent implements OnInit {
   login() {
    const auth = this.orderFrom.getRawValue() as Auth;
    this.authService.isLogin(auth)
-       .subscribe((resp) => {
+       .subscribe(() => {
           this.router.navigate(['home']);
+       },
+       (() => {
+         this.alertModalService.showALertDanger("E-mail ou Password está incorreto !")
        })
+       );
 
   }
 

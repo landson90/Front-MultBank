@@ -37,7 +37,7 @@
               [ngClass]="{'is-invalid': orderFrom.get('password').errors?.required && (form.submitted || orderFrom.get('password').touched)}"
               >
               <app-v-message
-              *ngIf="orderFrom.get('password').errors?.required && (form.submitted || orderFrom.get('password').touched)"
+              *ngIf="orderFrom.get('password').errors?.min && (form.submitted || orderFrom.get('password').touched)"
               text="O password do usuário é necessário"></app-v-message>
           </div>
 
