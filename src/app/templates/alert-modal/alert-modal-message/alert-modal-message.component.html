@@ -3,4 +3,13 @@
    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onClose()">
      <span aria-hidden="true">&times;</span>
    </button>
+   <hr>
+   <ol>
+     <li *ngFor="let item of fieldsErrors">
+       <b> {{item?.messageErro}} </b>
+     </li>
+    </ol>
+
  </div>
+
+

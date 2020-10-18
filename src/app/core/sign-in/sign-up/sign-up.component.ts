@@ -1,3 +1,4 @@
+
 import { UsuarioCliente } from './../../../models/usuario-cliente';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,8 @@ import { ModalAlertService } from 'src/app/service/modal-alert/modal-alert.servi
 })
 export class SignUpComponent implements OnInit {
 
-  orderForm: FormGroup
+  orderForm: FormGroup;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -37,15 +39,15 @@ export class SignUpComponent implements OnInit {
         '123456',
         [
           Validators.required,
-          Validators.min(6),
-          Validators.max(11)
+          //Validators.min(6),
+          //Validators.max(11)
         ]],
       cpf: [
-        '00011122233',
+        '09876',
         [
           Validators.required,
-          Validators.min(11),
-          Validators.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)
+          //Validators.min(11),
+         // Validators.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)
         ]],
       dateOfBirth: [
         '',
@@ -64,17 +66,11 @@ export class SignUpComponent implements OnInit {
     const clientUser = this.orderForm.getRawValue() as UsuarioCliente;
     this.usuarioClienteService.store(clientUser)
         .subscribe((resp) => {
-          console.log(resp)
+         this.alertModalService.showALertSuccess("Conta criada com sucesso !");
         },
         ((error) => {
-          console.log(error, 1);
-          console.log(error.error.msg, 2);
-
-          console.log(error.error.errors, 3);
-          const { msg } = error.error
-          this.alertModalService.showALertDanger(msg)
-
-
+          const { msg, errors } = error.error;
+          this.alertModalService.showALertDanger(msg, errors);
         })
         );
   }
