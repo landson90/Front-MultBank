@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { CoreInitialModule } from './core/core-initial.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponenteInitialModule } from './componente/componente-initial.module';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertModalMessageModule } from './templates/alert-modal/alert-modal-message/alert-modal-message.module';
 
 
 
@@ -20,6 +21,8 @@ import { ComponenteInitialModule } from './componente/componente-initial.module'
     HttpClientModule,
     CoreInitialModule,
     ComponenteInitialModule,
+    ModalModule.forRoot(),
+    AlertModalMessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
