@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -24,7 +23,6 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatBottomSheetModule
   ]
 })
 export class HomeModule { }
