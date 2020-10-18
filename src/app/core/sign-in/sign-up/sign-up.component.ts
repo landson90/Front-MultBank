@@ -1,6 +1,8 @@
+import { UsuarioCliente } from './../../../models/usuario-cliente';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioClienteService } from 'src/app/service/cliente/usuario-cliente.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +14,8 @@ export class SignUpComponent implements OnInit {
   orderForm: FormGroup
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private usuarioClienteService: UsuarioClienteService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,14 @@ export class SignUpComponent implements OnInit {
     this.router.navigate(['']);
   }
   createClientUser() {
-    console.log(this.orderForm.getRawValue())
+    const clientUser = this.orderForm.getRawValue() as UsuarioCliente;
+    this.usuarioClienteService.store(clientUser)
+        .subscribe((resp) => {
+          console.log(resp)
+        },
+        ((error) => {
+         console.log(error)
+        })
+        );
   }
 }

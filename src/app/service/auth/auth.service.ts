@@ -11,7 +11,7 @@ import { UserService } from '../user/user.service';
 })
 export class AuthService {
 
-  private userClient: UserClient;
+
   private apiURL: string;
 
   constructor(
