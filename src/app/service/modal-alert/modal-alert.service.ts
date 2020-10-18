@@ -26,7 +26,7 @@ export class ModalAlertService {
 
   }
   private convertInListFieldsErrors(fields?: any) {
-    console.log(fields);
+
     if(fields === undefined) {
       return null;
     }

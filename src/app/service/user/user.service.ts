@@ -40,4 +40,8 @@ export class UserService {
       balance
     ));
    }
+
+   getUserClientAccount() {
+     return this.clientUserService.getUser();
+   }
 }

@@ -7,7 +7,9 @@ import { FooterComponent } from 'src/app/templates/footer/footer/footer.componen
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list'
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -20,7 +22,9 @@ import { MatListModule } from '@angular/material/list'
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule,
+    MatBottomSheetModule
   ]
 })
 export class HomeModule { }

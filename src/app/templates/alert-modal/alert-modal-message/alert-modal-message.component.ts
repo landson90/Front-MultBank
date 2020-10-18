@@ -17,7 +17,7 @@ export class AlertModalMessageComponent implements OnInit {
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
-   // console.log(this.fieldsErrors)
+
   }
 
   onClose() {

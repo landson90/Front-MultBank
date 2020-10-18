@@ -13,16 +13,26 @@ export class ClientUserService {
   setClientUser(clientUser: ClientUser) {
     window.localStorage.setItem(CLIENTE, JSON.stringify(clientUser));
   }
-  getClientUSer() {
+
+  getClientUser() {
     return  window.localStorage.getItem(CLIENTE);
   }
+
   getUser() {
-    return this.userSebject.asObservable();
+   const userClient: ClientUser = JSON.parse(this.getClientUser())
+   this.returnUseClient(userClient);
+   return this.userSebject.asObservable();
   }
+
   logout() {
     this.userSebject.next(null);
   }
+
   isRemoveClient() {
     window.localStorage.removeItem(CLIENTE);
+  }
+
+ private  returnUseClient(user: ClientUser) {
+    this.userSebject.next(user);
   }
 }

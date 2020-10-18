@@ -1,6 +1,6 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav
-    mode="side" opened fixedInViewport="true"
+    mode="side" [opened]="openMenu" fixedInViewport="true"
     class="sidenav"
     fixedTopGap="65">
     <mat-list role="list" class="nav-list">
@@ -9,9 +9,6 @@
       </mat-list-item>
       <mat-list-item role="listitem">
         <a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> <b>HISTORICO</b></a>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <a href=""> <i class="fa fa-share-square-o" aria-hidden="true"></i><b>SAIR</b></a>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>

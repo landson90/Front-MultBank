@@ -1,7 +1,18 @@
 <mat-toolbar class="header mat-elevation-z4">
   <span>
-    <a href="">
-      <img src="../../../../assets/img/money.png" alt="Logo" class="logo">
-    </a>
+    <img src="../../../../assets/img/money.png" alt="Logo" class="logo" (click)="activeMenuOrClose(isActive)">
   </span>
+  <span class="header-title">
+    <b>  </b>
+    <button class="btn btn-outline-secondary" mat-button [matMenuTriggerFor]="menu">
+      <b>{{userClient?.name | uppercase}}</b>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item><b>USUÁRIO</b></button>
+      <button mat-menu-item type="button" (click)="getOutOfTheSystem()"><b>SAIR</b></button>
+    </mat-menu>
+
+
+  </span>
+
 </mat-toolbar>
