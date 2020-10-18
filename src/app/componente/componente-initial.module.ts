@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home/home.component';
+
 import { HomeModule } from './home/home/home.module';
 
 
@@ -9,7 +9,7 @@ import { HomeModule } from './home/home/home.module';
   declarations: [],
   imports: [
     CommonModule,
-    HomeModule
+    HomeModule,
   ]
 })
 export class ComponenteInitialModule { }

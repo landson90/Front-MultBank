@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponenteInitialModule } from './componente/componente-initial.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModalMessageModule } from './templates/alert-modal/alert-modal-message/alert-modal-message.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -22,7 +23,8 @@ import { AlertModalMessageModule } from './templates/alert-modal/alert-modal-mes
     CoreInitialModule,
     ComponenteInitialModule,
     ModalModule.forRoot(),
-    AlertModalMessageModule
+    AlertModalMessageModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

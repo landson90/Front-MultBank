@@ -1,0 +1,13 @@
+.hedear {
+  display: flex;
+  align-items: center;
+}
+
+.hedear a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+ .hedear .logo {
+   max-width: 28px;
+ }

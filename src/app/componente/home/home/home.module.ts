@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from 'src/app/templates/header/header/header.component';
 import { MenuComponent } from 'src/app/templates/menu/menu/menu.component';
 import { FooterComponent } from 'src/app/templates/footer/footer/footer.component';
-
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list'
 @NgModule({
   declarations: [
     HomeComponent,
@@ -15,7 +16,11 @@ import { FooterComponent } from 'src/app/templates/footer/footer/footer.componen
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule
   ]
 })
 export class HomeModule { }
