@@ -1,15 +1,17 @@
 <div class="alert alert-{{ type }} no-margin" role="alert">
   <strong> {{ message }} </strong>
-   <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onClose()">
-     <span aria-hidden="true">&times;</span>
-   </button>
-   <hr>
-   <ol>
-     <li *ngFor="let item of fieldsErrors">
-       <b> {{item?.messageErro}} </b>
-     </li>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onClose()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <div *ngIf="canDisplayModal">
+    <hr>
+    <ol>
+      <li *ngFor="let item of fieldsErrors">
+        <b> {{item?.messageErro}} </b>
+      </li>
     </ol>
+  </div>
 
- </div>
 
-
+</div>

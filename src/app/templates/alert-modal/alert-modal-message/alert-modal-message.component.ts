@@ -12,6 +12,7 @@ export class AlertModalMessageComponent implements OnInit {
   @Input() type: string;
   @Input() message: string;
   @Input() fieldsErrors: FieldsError[] = [];
+  @Input() canDisplayModal = false;
 
   constructor(public bsModalRef: BsModalRef) { }
 

@@ -34,9 +34,11 @@
             <label for="exampleInputPassword1" class="text-uppercase">Password</label>
             <input type="password" class="form-control" placeholder="" formControlName="password"
               [ngClass]="{'is-invalid': orderForm.get('password').errors?.required && (form.submitted || orderForm.get('password').touched)}">
-            <app-v-message *ngIf="orderForm.get('password').errors?.required && (form.submitted || orderForm.get('password').touched)" text="Campo password é necessário">
+            <app-v-message
+              *ngIf="orderForm.get('password').errors?.required && (form.submitted || orderForm.get('password').touched)"
+              text="Campo password é necessário">
             </app-v-message>
-            <app-v-message *ngIf="orderForm.get('password').errors?.max && (form.submitted || orderForm.get('password').touched)"
+            <app-v-message *ngIf="orderForm.get('password').errors?.min && (form.submitted || orderForm.get('password').touched)"
               text="Campo password deve entre 6 e 11 digitos " ></app-v-message>
           </div>
           <div class="form-group">

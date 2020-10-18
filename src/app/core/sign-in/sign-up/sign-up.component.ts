@@ -25,29 +25,28 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.orderForm = this.formBuilder.group({
       nome: [
-        'teste',
+        '',
         [
           Validators.required,
         ]],
       email:  [
-        'landson@gmail.com',
+        '',
         [
           Validators.required,
           Validators.email
         ]],
       password:  [
-        '123456',
+        '',
         [
           Validators.required,
-          //Validators.min(6),
-          //Validators.max(11)
+          Validators.min(6),
         ]],
       cpf: [
-        '09876',
+        '',
         [
           Validators.required,
-          //Validators.min(11),
-         // Validators.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)
+          Validators.min(11),
+         Validators.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)
         ]],
       dateOfBirth: [
         '',
