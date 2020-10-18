@@ -64,8 +64,9 @@ export class SignUpComponent implements OnInit {
   createClientUser() {
     const clientUser = this.orderForm.getRawValue() as UsuarioCliente;
     this.usuarioClienteService.store(clientUser)
-        .subscribe((resp) => {
-         this.alertModalService.showALertSuccess("Conta criada com sucesso !");
+        .subscribe(() => {
+          this.router.navigate(['']);
+          this.alertModalService.showALertSuccess("Conta criada com sucesso !");
         },
         ((error) => {
           const { msg, errors } = error.error;
