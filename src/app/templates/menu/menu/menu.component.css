@@ -4,7 +4,10 @@
 }
 
 .sidenav a {
-  color: #fff;
+  color: #000000;
+}
+.sidenav a :hover {
+  color: #ffff;
 }
 
 .sidenav i {

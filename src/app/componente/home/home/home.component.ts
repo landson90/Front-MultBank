@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientUser } from 'src/app/models/client-user';
 import { UserService } from './../../../service/user/user.service';
 
 @Component({
@@ -10,16 +11,20 @@ import { UserService } from './../../../service/user/user.service';
 })
 export class HomeComponent implements OnInit {
 
+  userClient: ClientUser;
   constructor(
     private router: Router,
     private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    this.userService.getUserClientAccount().subscribe((resp) => {
+      this.userClient  = resp;
+    })
   }
 
-  sair() {
-    this.userService.logout();
+  getOutOfTheSystem() {
     this.router.navigate(['']);
+    this.userService.logout();
   }
 }

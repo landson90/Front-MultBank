@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
 
   activeMenuOrClose(isValue) {
     if(isValue === true) {
-
       this.menuActionService.setClose(isValue);
       this.isActive = false;
     } else {
@@ -36,9 +35,6 @@ export class HeaderComponent implements OnInit {
       this.isActive = true;
     }
   }
-  getOutOfTheSystem() {
-    this.router.navigate(['']);
-    this.userService.logout();
-  }
+
 
 }
