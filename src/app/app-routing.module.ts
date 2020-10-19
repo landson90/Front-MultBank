@@ -1,3 +1,5 @@
+import { DepositComponent } from './componente/deposit/deposit.component';
+
 import { LonginGuard } from './core/guard-router/login/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -27,7 +29,11 @@ const routes: Routes = [
       {
         path: "historico",
         component: HistoricComponent,
-      }
+      },
+      {
+        path: "deposito",
+        component: DepositComponent,
+      },
     ]
   },
 

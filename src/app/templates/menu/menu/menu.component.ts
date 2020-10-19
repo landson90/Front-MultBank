@@ -23,6 +23,9 @@ export class MenuComponent implements OnInit {
   historico() {
     this.router.navigate(["home/historico"]);
   }
+  deposit() {
+    this.router.navigate(["home/deposito"]);
+  }
 
 
 
