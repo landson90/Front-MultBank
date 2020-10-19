@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -28,7 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatMenuModule,
     MatCardModule,
     MatGridListModule,
-    RouterModule
+    RouterModule,
+    MatButtonModule
   ]
 })
 export class HomeModule { }

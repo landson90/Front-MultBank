@@ -9,4 +9,9 @@
 
 .a-sair {
   cursor: pointer;
+
+}
+
+#btn-sair {
+  margin-top: -25px;
 }
