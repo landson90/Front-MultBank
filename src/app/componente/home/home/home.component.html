@@ -8,13 +8,11 @@
     <mat-card-header>
       <div mat-card-avatar class="example-header-image">
       </div>
-      <mat-card-title>
-          <b>{{userClient.name | uppercase}}</b> | <a  (click)="getOutOfTheSystem()" class="ml-3 a-sair">   SAIR </a>
-      </mat-card-title>
-
-      <mat-card-subtitle>
-        <b>Conta - </b> {{userClient.account}} | <b>Saldo </b> {{userClient.balance |  currency:'BRL'}}
-      </mat-card-subtitle>
+      <app-card-client-home
+      [clientName]="userClient.name"
+      [clientAccount]="userClient.account"
+      [clientBalance]="userClient.balance"
+      ></app-card-client-home>
     </mat-card-header>
   </mat-card>
 </div>

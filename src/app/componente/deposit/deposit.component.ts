@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BankingTransaction } from 'src/app/models/banking-transaction';
 import { ClientUser } from 'src/app/models/client-user';
+import { TransactionVo } from 'src/app/models/transaction-vo';
 import { ModalAlertService } from 'src/app/service/modal-alert/modal-alert.service';
 import { TransactionBankService } from 'src/app/service/transaction/transaction-bank.service';
 import { UserService } from 'src/app/service/user/user.service';
@@ -14,6 +16,7 @@ export class DepositComponent implements OnInit {
 
   orderForm: FormGroup;
   clintUserAccount: ClientUser;
+
   constructor(
     private transactionBankService: TransactionBankService,
     private modalAlertService: ModalAlertService,
@@ -37,7 +40,14 @@ export class DepositComponent implements OnInit {
   }
 
   makeDeposit() {
-    console.log(this.orderForm.getRawValue());
+    const deposit = this.orderForm.getRawValue() as BankingTransaction;
+    this.transactionBankService.makeDeposit(deposit)
+        .subscribe(resp => {
+          const { msg, value } = resp;
+          const msgSuccessModal = `${msg} Saldo em conta ${value}`;
+          this.modalAlertService.showALertSuccess(msgSuccessModal);
+          this.transactionBankService.setCardVisibility(true);
+        })
   }
 
 

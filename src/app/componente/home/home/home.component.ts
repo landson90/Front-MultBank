@@ -23,8 +23,4 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getOutOfTheSystem() {
-    this.router.navigate(['']);
-    this.userService.logout();
-  }
 }

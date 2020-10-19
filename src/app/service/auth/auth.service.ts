@@ -1,10 +1,9 @@
 
-import { UserClient } from './../../models/user-client';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Auth } from 'src/app/models/auth';
-import {  tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { UserService } from '../user/user.service';
 @Injectable({
   providedIn: 'root'

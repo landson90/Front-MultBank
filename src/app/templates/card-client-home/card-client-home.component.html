@@ -1,0 +1,7 @@
+<mat-card-title>
+  <b>{{clientName | uppercase}}</b> | <a  (click)="getOutOfTheSystem()" class="ml-3 a-sair">   SAIR </a>
+</mat-card-title>
+
+<mat-card-subtitle>
+<b>Conta - </b> {{clientAccount}} | <b>Saldo </b> {{balance |  currency:'BRL'}}
+</mat-card-subtitle>

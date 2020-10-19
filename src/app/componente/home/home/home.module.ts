@@ -13,12 +13,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
+import { CardClientHomeComponent } from 'src/app/templates/card-client-home/card-client-home.component';
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    CardClientHomeComponent
   ],
   imports: [
     CommonModule,
