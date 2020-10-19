@@ -1,1 +1,31 @@
-<p>deposit works!</p>
+<div class="card">
+  <div class="card-header">
+    <h2><b>Deposito</b></h2>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">Cliente: {{clintUserAccount.name}} | Conta: {{clintUserAccount.account}} | Contato:
+      {{clintUserAccount.email}}</h3>
+    <hr>
+    <form class="form-group" [formGroup]="orderForm">
+      <div class="row">
+        <div class="col-lg-12">
+          <input
+            class="form-control"
+            type="number"
+            placeholder="Digite o valor do deposito"
+            formControlName="valueTransaction">
+        </div>
+      </div>
+      <div class="container">
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-12">
+          <button
+            type="button"
+            (click)="makeDeposit()"
+            class="btn btn-outline-secondary btn-block"><b>Depositar</b></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -36,5 +36,9 @@ export class DepositComponent implements OnInit {
     this.userService.getUserClientAccount().subscribe(resp => this.clintUserAccount = resp );
   }
 
+  makeDeposit() {
+    console.log(this.orderForm.getRawValue());
+  }
+
 
 }
