@@ -1,0 +1,19 @@
+<ol class="list-unstyled">
+  <li class="row no-gutters p-0">
+      <div *ngFor="let item of historicList" >
+          <a >
+            <div class="card border-light ml-4 mt-2">
+              <h4 class="card-header"><b>{{item?.transactionEnum | uppercase}}</b></h4>
+              <div class="card-block text-justify card-body">
+                <ol class="list-unstyled">
+                  <li> <b>Cliente</b> {{item?.client}}</li>
+                  <li> <b>Valor</b> {{item?.value  |  currency:'BRL'}}</li>
+                  <li> <b>Conta</b> {{item?.numberAccount}}</li>
+                  <li> <b>Data</b> {{item?.createAT | date: 'dd/MM/yyyy' }}</li>
+                </ol>
+              </div>
+          </div>
+          </a>
+      </div>
+  </li>
+</ol>

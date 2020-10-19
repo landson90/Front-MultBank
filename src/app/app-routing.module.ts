@@ -5,6 +5,7 @@ import { HomeComponent } from './componente/home/home/home.component';
 import { AuthGuard } from './core/guard-router/auth/auth.guard';
 import { SignInComponent } from './core/sign-in/sign-in.component';
 import { SignUpComponent } from './core/sign-in/sign-up/sign-up.component';
+import { HistoricComponent } from './componente/historic/historic.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,15 @@ const routes: Routes = [
   {
     path: "home",
     component: HomeComponent,
-    canActivate: [AuthGuard]
-  }
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: "historico",
+        component: HistoricComponent,
+      }
+    ]
+  },
+
 ];
 
 @NgModule({

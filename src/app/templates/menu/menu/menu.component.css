@@ -5,6 +5,7 @@
 
 .sidenav a {
   color: #000000;
+  cursor: pointer;
 }
 .sidenav a :hover {
   color: #ffff;

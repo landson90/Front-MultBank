@@ -12,7 +12,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
     }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = JSON.parse(this.tokenService.getToken());
+    const token = this.tokenService.getToken();
     if(token !== null) {
       req = req.clone({
         setHeaders: {

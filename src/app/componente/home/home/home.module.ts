@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -26,7 +27,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatMenuModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    RouterModule
   ]
 })
 export class HomeModule { }

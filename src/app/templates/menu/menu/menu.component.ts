@@ -20,6 +20,9 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.menuActionService.getClose().subscribe((resp) => this.openMenu = resp)
   }
+  historico() {
+    this.router.navigate(["home/historico"]);
+  }
 
 
 
