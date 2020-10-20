@@ -36,18 +36,25 @@ export class DepositComponent implements OnInit {
   }
 
   private getAccount() {
+
     this.userService.getUserClientAccount().subscribe(resp => this.clintUserAccount = resp );
   }
 
   makeDeposit() {
     const deposit = this.orderForm.getRawValue() as BankingTransaction;
-    this.transactionBankService.makeDeposit(deposit)
-        .subscribe(resp => {
-          const { msg, value } = resp;
-          const msgSuccessModal = `${msg} Saldo em conta ${value}`;
-          this.modalAlertService.showALertSuccess(msgSuccessModal);
-          this.transactionBankService.setCardVisibility(true);
-        })
+    if(deposit.valueTransaction > 0) {
+      this.transactionBankService.makeDeposit(deposit)
+      .subscribe(resp => {
+        const { msg, value } = resp;
+        const msgSuccessModal = `${msg} Saldo em conta ${value}`;
+        this.modalAlertService.showALertSuccess(msgSuccessModal);
+        this.transactionBankService.setCardVisibility(true);
+      });
+
+    } else  {
+      this.modalAlertService.showALertDanger("Valor invalido !");
+    }
+
   }
 
 

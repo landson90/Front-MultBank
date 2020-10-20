@@ -8,6 +8,7 @@ import { HistoricComponent } from './historic/historic.component';
 import { MatTableModule } from '@angular/material/table';
 import { DepositComponent } from './deposit/deposit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TemplateInitialModule } from '../templates/template-initial.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatExpansionModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TemplateInitialModule
   ]
 })
 export class ComponenteInitialModule { }
