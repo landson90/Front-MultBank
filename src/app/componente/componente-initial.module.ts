@@ -9,7 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { DepositComponent } from './deposit/deposit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateInitialModule } from '../templates/template-initial.module';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { TemplateInitialModule } from '../templates/template-initial.module';
     MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
-    TemplateInitialModule
+    TemplateInitialModule,
+    PaginationModule.forRoot(),
   ]
 })
 export class ComponenteInitialModule { }

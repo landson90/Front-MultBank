@@ -62,7 +62,6 @@ export class HistoricComponent implements OnInit {
     if(this.totalNumberOfPages === goToPage) {
       goToPage -= 1 ;
       this.displayPageNumber -= 1;
-      this.historicZeroPage(this.clientId, goToPage);
     }
     this.historicZeroPage(this.clientId, goToPage);
 
