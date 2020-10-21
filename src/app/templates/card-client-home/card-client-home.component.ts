@@ -1,9 +1,9 @@
+import { OnInit } from '@angular/core';
 import { AccountService } from './../../service/account/account.service';
 import {
   Component,
   Input,
   OnChanges,
-  OnInit,
   SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -21,21 +21,29 @@ export class CardClientHomeComponent implements OnChanges {
   @Input() clientAccount: string;
   @Input() clientBalance: number;
   balance: number;
-  isValeuBoolean$: Observable<boolean>;
+  isValeuBoolean$: boolean;
+
   constructor(
     private router: Router,
     private userService: UserService,
     private accountService: AccountService,
     private transactionBankService: TransactionBankService
   ) { }
+
+
+
   ngOnChanges(changes: SimpleChanges): void {
-    this.getExtractBoolean();
+    this.getExtractBoolean()
   }
 
-  private getExtractBoolean() {
+  getExtractBoolean() {
 
-   this.isValeuBoolean$ = this.transactionBankService.getCardVisibility();
-    this.isValeuBoolean$.subscribe(resp => this.reaload(resp));
+    this.transactionBankService
+    .getCardVisibility()
+    .subscribe((resp) => {
+      this.isValeuBoolean$ = resp;
+      this.reaload(resp)
+    })
   }
 
   reaload(isReload: boolean) {

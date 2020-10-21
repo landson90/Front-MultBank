@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TransactionBankService {
 
   private apiURL: string;
-  isUpdateCard = new BehaviorSubject<boolean>(false);
+  isUpdateCard = new BehaviorSubject<boolean>(null);
 
   constructor(
     private httpClient: HttpClient,

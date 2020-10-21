@@ -25,8 +25,7 @@ import { CashOutComponent } from './cash-out/cash-out.component';
     MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
-    TemplateInitialModule,
-
+    TemplateInitialModule
   ]
 })
 export class ComponenteInitialModule { }
