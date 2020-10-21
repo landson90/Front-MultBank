@@ -52,6 +52,7 @@ export class HistoricComponent implements OnInit {
     if(goToPage < 0) {
       goToPage += 1 ;
       this.displayPageNumber += 1;
+      return;
     }
     this.historicZeroPage(this.clientId, goToPage);
   }
@@ -62,7 +63,9 @@ export class HistoricComponent implements OnInit {
     if(this.totalNumberOfPages === goToPage) {
       goToPage -= 1 ;
       this.displayPageNumber -= 1;
+      return;
     }
+    console.log(goToPage, 1);
     this.historicZeroPage(this.clientId, goToPage);
 
   }
