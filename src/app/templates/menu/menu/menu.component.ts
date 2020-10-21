@@ -26,6 +26,9 @@ export class MenuComponent implements OnInit {
   deposit() {
     this.router.navigate(["home/deposito"]);
   }
+  cashOut() {
+    this.router.navigate(["home/saque"]);
+  }
 
 
 
