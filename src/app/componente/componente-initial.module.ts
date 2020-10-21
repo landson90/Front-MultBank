@@ -9,12 +9,13 @@ import { MatTableModule } from '@angular/material/table';
 import { DepositComponent } from './deposit/deposit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateInitialModule } from '../templates/template-initial.module';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { CashOutComponent } from './cash-out/cash-out.component';
 
 @NgModule({
   declarations: [
     HistoricComponent,
     DepositComponent,
+    CashOutComponent,
 
   ],
   imports: [
@@ -25,7 +26,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     FormsModule,
     ReactiveFormsModule,
     TemplateInitialModule,
-    PaginationModule.forRoot(),
+
   ]
 })
 export class ComponenteInitialModule { }

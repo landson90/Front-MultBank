@@ -6,7 +6,7 @@
     <h3 class="card-title">Cliente: {{clintUserAccount.name}} | Conta: {{clintUserAccount.account}} | Contato:
       {{clintUserAccount.email}}</h3>
     <hr>
-    <form class="form-group" >
+    <form class="form-group" [formGroup]="orderForm" #form="ngForm">
       <div class="row">
         <div class="col-lg-12">
           <input
@@ -14,9 +14,11 @@
             type="number"
             placeholder="Digite o valor do deposito"
             formControlName="valueTransaction"
-
+            [ngClass]="{'is-invalid': orderForm.get('valueTransaction').errors?.required && (form.submitted || orderForm.get('valueTransaction').touched)}"
             >
-
+            <app-v-message
+            *ngIf="orderForm.get('valueTransaction').errors?.required && (form.submitted || orderForm.get('valueTransaction').touched)"
+            text="O campo valor é obrigatorio !"></app-v-message>
         </div>
       </div>
       <div class="container">
@@ -25,8 +27,8 @@
         <div class="col-lg-12">
           <button
             type="button"
-            (click)="makeWithdrawal()"
-            class="btn btn-outline-secondary btn-block"><b>{{btnTitle}}</b></button>
+            (click)="persistenceTransactionForm()"
+            class="btn btn-outline-secondary btn-block"><b>Depositar</b></button>
         </div>
       </div>
     </form>

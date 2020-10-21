@@ -63,6 +63,7 @@ export class SignUpComponent implements OnInit {
   }
   createClientUser() {
     const clientUser = this.orderForm.getRawValue() as UsuarioCliente;
+
     this.usuarioClienteService.store(clientUser)
         .subscribe(() => {
           this.router.navigate(['']);

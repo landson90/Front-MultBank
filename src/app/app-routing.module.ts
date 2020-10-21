@@ -8,6 +8,7 @@ import { AuthGuard } from './core/guard-router/auth/auth.guard';
 import { SignInComponent } from './core/sign-in/sign-in.component';
 import { SignUpComponent } from './core/sign-in/sign-up/sign-up.component';
 import { HistoricComponent } from './componente/historic/historic.component';
+import { CashOutComponent } from './componente/cash-out/cash-out.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: "deposito",
         component: DepositComponent,
+      },
+      {
+        path: "saque",
+        component: CashOutComponent,
       },
     ]
   },

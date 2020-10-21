@@ -18,7 +18,6 @@ export class HistoricService {
   }
 
   listHistoricClient(accountId: number, numberPage: number) {
-    console.log(numberPage, 2)
     return this.httpClient.get<PageItem>(`${this.apiURL}/${accountId}?page=${numberPage}`);
   }
 }

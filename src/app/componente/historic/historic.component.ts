@@ -37,7 +37,6 @@ export class HistoricComponent implements OnInit {
 
   private historicZeroPage(clientID: number, numberPage: number) {
     this.historicService.listHistoricClient(clientID, numberPage).subscribe((resp) => {
-      console.log(resp);
       this.page = resp;
       this.historicList = this.page.content;
       this.pageNow = this.page.number;
@@ -65,7 +64,6 @@ export class HistoricComponent implements OnInit {
       this.displayPageNumber -= 1;
       return;
     }
-    console.log(goToPage, 1);
     this.historicZeroPage(this.clientId, goToPage);
 
   }

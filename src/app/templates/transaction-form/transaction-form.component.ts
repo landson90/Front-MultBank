@@ -6,6 +6,10 @@ import { ModalAlertService } from 'src/app/service/modal-alert/modal-alert.servi
 import { TransactionBankService } from 'src/app/service/transaction/transaction-bank.service';
 import { UserService } from 'src/app/service/user/user.service';
 
+export enum TypeTransactionEnum {
+  DEPOSITAR = 'DEPOSITAR',
+  SAQUE = 'SAQUE'
+}
 @Component({
   selector: 'app-transaction-form',
   templateUrl: './transaction-form.component.html',
@@ -15,6 +19,7 @@ export class TransactionFormComponent implements OnInit {
 
   @Input() titleCard: string;
   @Input() btnTitle: string;
+  @Input() typeTransactionForm: string;
   orderForm: FormGroup;
   clintUserAccount: ClientUser;
 
@@ -31,16 +36,24 @@ export class TransactionFormComponent implements OnInit {
       accountClient: [this.clintUserAccount.account],
       valueTransaction: ['', Validators.required],
       accountOtherClient: [''],
-      transactionEnum: ['SAQUE']
+      transactionEnum: ['DEPOSITO']
     })
   }
 
   private getAccount() {
     this.userService.getUserClientAccount().subscribe(resp => this.clintUserAccount = resp );
   }
+  persistenceTransactionForm() {
+    if(TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
+      this.goTransactionDeposit();
+    }
+    if(TypeTransactionEnum.SAQUE === this.typeTransactionForm) {
+      this.getDrift()
+    }
+  }
 
-  makeWithdrawal() {
-    const deposit = this.orderForm.getRawValue() as BankingTransaction;
+  private goTransactionDeposit() {
+    const deposit = this.getBankingTransaction();
     if(deposit.valueTransaction > 0) {
       this.transactionBankService.makeDeposit(deposit)
       .subscribe(resp => {
@@ -54,5 +67,14 @@ export class TransactionFormComponent implements OnInit {
       this.modalAlertService.showALertDanger("Valor invalido !");
     }
 
+  }
+
+  private getDrift() {
+
+  }
+
+  private getBankingTransaction() {
+    const bankingTransaction = this.orderForm.getRawValue() as BankingTransaction;
+    return bankingTransaction
   }
 }
