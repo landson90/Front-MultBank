@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankingTransaction } from 'src/app/models/banking-transaction';
@@ -20,6 +21,7 @@ export class TransactionFormComponent implements OnInit {
   @Input() titleCard: string;
   @Input() btnTitle: string;
   @Input() typeTransactionForm: string;
+
   orderForm: FormGroup;
   clintUserAccount: ClientUser;
 
@@ -32,16 +34,12 @@ export class TransactionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAccount();
-    this.orderForm = this.formBuilder.group({
-      accountClient: [this.clintUserAccount.account],
-      valueTransaction: ['', Validators.required],
-      accountOtherClient: [''],
-      transactionEnum: ['DEPOSITO']
-    })
+    this.assembleForm();
   }
 
   private getAccount() {
     this.userService.getUserClientAccount().subscribe(resp => this.clintUserAccount = resp );
+
   }
   persistenceTransactionForm() {
     if(TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
@@ -52,29 +50,67 @@ export class TransactionFormComponent implements OnInit {
     }
   }
 
+  private assembleForm() {
+    if(TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
+      this.orderForm = this.formBuilder.group({
+        accountClient: [this.clintUserAccount.account],
+        valueTransaction: ['', Validators.required],
+        accountOtherClient: [''],
+        transactionEnum: ['DEPOSITO']
+      });
+    } else if (TypeTransactionEnum.SAQUE === this.typeTransactionForm) {
+      this.orderForm = this.formBuilder.group({
+        accountClient: [this.clintUserAccount.account],
+        valueTransaction: ['', Validators.required],
+        accountOtherClient: [''],
+        transactionEnum: ['SAQUE']
+      })
+    }
+
+
+  }
   private goTransactionDeposit() {
     const deposit = this.getBankingTransaction();
-    if(deposit.valueTransaction > 0) {
+    if(deposit.valueTransaction > 0 ) {
       this.transactionBankService.makeDeposit(deposit)
       .subscribe(resp => {
         const { msg, value } = resp;
         const msgSuccessModal = `${msg} Saldo em conta ${value}`;
         this.modalAlertService.showALertSuccess(msgSuccessModal);
         this.transactionBankService.setCardVisibility(true);
+        this.updateLocalStorageClient(value);
       });
 
     } else  {
       this.modalAlertService.showALertDanger("Valor invalido !");
     }
-
+    this.assembleForm();
   }
 
   private getDrift() {
+    console.log(this.getBankingTransaction())
+    const deposit = this.getBankingTransaction();
 
+    if( this.clintUserAccount.balance >= deposit.valueTransaction && deposit.valueTransaction > 0) {
+        this.transactionBankService.getDrift(deposit).subscribe((resp) => {
+          const { msg, value } = resp;
+          const msgSuccessModal = `${msg} Saldo em conta ${value}`;
+          this.modalAlertService.showALertSuccess(msgSuccessModal);
+          this.transactionBankService.setCardVisibility(true);
+          this.updateLocalStorageClient(value);
+        });
+    } else {
+      this.modalAlertService.showALertDanger("Valor invalido !");
+    }
+    this.assembleForm();
   }
 
   private getBankingTransaction() {
     const bankingTransaction = this.orderForm.getRawValue() as BankingTransaction;
     return bankingTransaction
+  }
+  updateLocalStorageClient(balance: number) {
+    this.clintUserAccount.balance = balance;
+    this.userService.updateClientLocalStorage(this.clintUserAccount);
   }
 }

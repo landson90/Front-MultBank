@@ -16,13 +16,16 @@ export class TransactionBankService {
   constructor(
     private httpClient: HttpClient,
   ) {
-    this.apiURL = `${environment.baseURL}/historico/depositar`
+    this.apiURL = `${environment.baseURL}/historico`
    }
 
-   makeDeposit(deposit: BankingTransaction) {
-     return this.httpClient.post<TransactionVo>(this.apiURL, deposit);
-   }
+  makeDeposit(deposit: BankingTransaction) {
+     return this.httpClient.post<TransactionVo>(`${this.apiURL}/depositar`, deposit);
+  }
 
+  getDrift(withdrawal: BankingTransaction) {
+    return this.httpClient.post<TransactionVo>(`${this.apiURL}/saque`, withdrawal);
+  }
   setCardVisibility(isValue: boolean) {
     this.isUpdateCard.next(isValue);
   }

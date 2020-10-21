@@ -44,4 +44,19 @@ export class UserService {
    getUserClientAccount() {
      return this.clientUserService.getUser();
    }
+
+   updateClientLocalStorage(clientUser: ClientUser) {
+     this.clientUserService.isRemoveClient();
+
+      this.clientUserService.setClientUser(new ClientUser(
+      clientUser.clientId,
+      clientUser.accountId,
+      clientUser.name,
+      clientUser.email,
+      clientUser.account,
+      clientUser.balance
+    ));
+
+
+   }
 }
