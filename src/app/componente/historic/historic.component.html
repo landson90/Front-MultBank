@@ -17,3 +17,10 @@
       </div>
   </li>
 </ol>
+<nav aria-label="Page navigation example " id="nav-page">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" (click)="previousPage(pageNow)">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">{{displayPageNumber}}</a></li>
+    <li class="page-item"><a class="page-link"(click)="nextPage(pageNow)">Next</a></li>
+  </ul>
+</nav>

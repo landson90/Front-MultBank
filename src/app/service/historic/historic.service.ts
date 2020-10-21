@@ -1,4 +1,4 @@
-import { Historic } from './../../models/historic';
+import { Historic, PageItem } from './../../models/historic';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,7 @@ export class HistoricService {
     this.apiURL = `${environment.baseURL}/historico`
   }
 
-  listHistoricClient(accountId: number) {
-    return this.httpClient.get<Historic[]>(`${this.apiURL}/${accountId}`);
+  listHistoricClient(accountId: number, numberPage: number) {
+    return this.httpClient.get<PageItem>(`${this.apiURL}/${accountId}?page=${numberPage}`);
   }
 }
