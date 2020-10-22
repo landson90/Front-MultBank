@@ -7,7 +7,22 @@
       {{clintUserAccount.email}}</h3>
     <hr>
     <form class="form-group" [formGroup]="orderForm" #form="ngForm">
-      <div class="row">
+      <div class="row" *ngIf="isTransferActive" >
+        <div class="col-lg-12">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Número da contra "
+            formControlName="accountOtherClient"
+            (change)="isAccountCheck()"
+            [ngClass]="{'is-invalid': orderForm.get('accountOtherClient').errors?.required && (form.submitted || orderForm.get('accountOtherClient').touched)}"
+            >
+            <app-v-message
+            *ngIf="orderForm.get('accountOtherClient').errors?.required && (form.submitted || orderForm.get('accountOtherClient').touched)"
+            text="O campo é obrigatorio !"></app-v-message>
+        </div>
+      </div>
+      <div class="row mt-2">
         <div class="col-lg-12">
           <input
             class="form-control"

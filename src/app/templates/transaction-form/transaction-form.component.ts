@@ -1,4 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AccountService } from './../../service/account/account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankingTransaction } from 'src/app/models/banking-transaction';
@@ -10,15 +10,14 @@ import { UserService } from 'src/app/service/user/user.service';
 export enum TypeTransactionEnum {
   DEPOSITAR = 'DEPOSITAR',
   SAQUE = 'SAQUE',
-  TRANSFERENCIA = 'TRANSFERENCIA'
+  TRANSFERENCIA = 'TRANSFERENCIA',
 }
 @Component({
   selector: 'app-transaction-form',
   templateUrl: './transaction-form.component.html',
-  styleUrls: ['./transaction-form.component.css']
+  styleUrls: ['./transaction-form.component.css'],
 })
 export class TransactionFormComponent implements OnInit {
-
   @Input() titleCard: string;
   @Input() btnTitle: string;
   @Input() typeTransactionForm: string;
@@ -26,13 +25,15 @@ export class TransactionFormComponent implements OnInit {
 
   orderForm: FormGroup;
   clintUserAccount: ClientUser;
+  anotherAccount: string;
 
   constructor(
     private transactionBankService: TransactionBankService,
     private modalAlertService: ModalAlertService,
     private userService: UserService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
     this.getAccount();
@@ -40,79 +41,116 @@ export class TransactionFormComponent implements OnInit {
   }
 
   private getAccount() {
-    this.userService.getUserClientAccount().subscribe(resp => this.clintUserAccount = resp );
-
+    this.userService
+      .getUserClientAccount()
+      .subscribe((resp) => (this.clintUserAccount = resp));
   }
   persistenceTransactionForm() {
-    if(TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
+    if (TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
       this.goTransactionDeposit();
-    }
-    if(TypeTransactionEnum.SAQUE === this.typeTransactionForm) {
-      this.getDrift()
+    } else if (TypeTransactionEnum.SAQUE === this.typeTransactionForm) {
+      this.getDrift();
+    } else {
+      this.getTransferBetweenAccounts();
     }
   }
 
   private assembleForm() {
-    if(TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
+    if (TypeTransactionEnum.DEPOSITAR === this.typeTransactionForm) {
       this.orderForm = this.formBuilder.group({
         accountClient: [this.clintUserAccount.account],
         valueTransaction: ['', Validators.required],
         accountOtherClient: [''],
-        transactionEnum: ['DEPOSITO']
+        transactionEnum: ['DEPOSITO'],
       });
     } else if (TypeTransactionEnum.SAQUE === this.typeTransactionForm) {
       this.orderForm = this.formBuilder.group({
         accountClient: [this.clintUserAccount.account],
         valueTransaction: ['', Validators.required],
         accountOtherClient: [''],
-        transactionEnum: ['SAQUE']
-      })
+        transactionEnum: ['SAQUE'],
+      });
+    } else {
+      this.orderForm = this.formBuilder.group({
+        accountClient: [this.clintUserAccount.account],
+        valueTransaction: ['', Validators.required],
+        accountOtherClient: ['', Validators.required],
+        transactionEnum: ['TRANSFERENCIA'],
+      });
     }
-
-
   }
+
   private goTransactionDeposit() {
     const deposit = this.getBankingTransaction();
-    if(deposit.valueTransaction > 0 ) {
-      this.transactionBankService.makeDeposit(deposit)
-      .subscribe(resp => {
+    if (deposit.valueTransaction > 0) {
+      this.transactionBankService.makeDeposit(deposit).subscribe((resp) => {
         const { msg, value } = resp;
         const msgSuccessModal = `${msg} Saldo em conta ${value}`;
         this.modalAlertService.showALertSuccess(msgSuccessModal);
         this.transactionBankService.setCardVisibility(true);
         this.updateLocalStorageClient(value);
       });
-
-    } else  {
-      this.modalAlertService.showALertDanger("Valor invalido !");
+    } else {
+      this.modalAlertService.showALertDanger('Valor invalido !');
     }
     this.assembleForm();
   }
 
   private getDrift() {
-    console.log(this.getBankingTransaction())
     const deposit = this.getBankingTransaction();
 
-    if( this.clintUserAccount.balance >= deposit.valueTransaction && deposit.valueTransaction > 0) {
-        this.transactionBankService.getDrift(deposit).subscribe((resp) => {
-          const { msg, value } = resp;
-          const msgSuccessModal = `${msg} Saldo em conta ${value}`;
-          this.modalAlertService.showALertSuccess(msgSuccessModal);
-          this.transactionBankService.setCardVisibility(true);
-          this.updateLocalStorageClient(value);
-        });
+    if (
+      this.clintUserAccount.balance >= deposit.valueTransaction &&
+      deposit.valueTransaction > 0
+    ) {
+      this.transactionBankService.getDrift(deposit).subscribe((resp) => {
+        const { msg, value } = resp;
+        const msgSuccessModal = `${msg} Saldo em conta ${value}`;
+        this.modalAlertService.showALertSuccess(msgSuccessModal);
+        this.transactionBankService.setCardVisibility(true);
+        this.updateLocalStorageClient(value);
+      });
     } else {
-      this.modalAlertService.showALertDanger("Valor invalido !");
+      this.modalAlertService.showALertDanger('Valor invalido !');
     }
     this.assembleForm();
   }
-
+  private getTransferBetweenAccounts() {
+    const transfer = this.getBankingTransaction();
+    if (
+      this.clintUserAccount.balance > transfer.valueTransaction &&
+      transfer.valueTransaction > 0
+    ) {
+      this.transactionBankService.getTransaciont(transfer).subscribe((resp) => {
+        const { msg, value } = resp;
+        const msgSuccessModal = `${msg} Saldo em conta ${value}`;
+        this.modalAlertService.showALertSuccess(msgSuccessModal);
+        this.transactionBankService.setCardVisibility(true);
+        this.updateLocalStorageClient(value);
+      });
+    } else {
+      this.modalAlertService.showALertDanger('Valor invalido !');
+    }
+    this.assembleForm();
+  }
   private getBankingTransaction() {
     const bankingTransaction = this.orderForm.getRawValue() as BankingTransaction;
-    return bankingTransaction
+    return bankingTransaction;
   }
   updateLocalStorageClient(balance: number) {
     this.clintUserAccount.balance = balance;
     this.userService.updateClientLocalStorage(this.clintUserAccount);
+  }
+  isAccountCheck() {
+    const accountTransfer = this.orderForm.get('accountOtherClient').value;
+    this.accountService.show(accountTransfer).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.anotherAccount = resp.account;
+      },
+      (error) => {
+        this.modalAlertService.showALertDanger('Conta não encontrada !');
+      }
+    );
   }
 }

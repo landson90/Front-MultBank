@@ -26,6 +26,9 @@ export class TransactionBankService {
   getDrift(withdrawal: BankingTransaction) {
     return this.httpClient.post<TransactionVo>(`${this.apiURL}/saque`, withdrawal);
   }
+  getTransaciont(withdrawal: BankingTransaction) {
+    return this.httpClient.post<TransactionVo>(`${this.apiURL}/tranferencia`, withdrawal);
+  }
   setCardVisibility(isValue: boolean) {
     this.isUpdateCard.next(isValue);
   }
