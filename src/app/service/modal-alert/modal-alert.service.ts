@@ -4,8 +4,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertModalMessageComponent } from 'src/app/templates/alert-modal/alert-modal-message/alert-modal-message.component';
 
 export enum AlertType  {
-  DANGER = 'danger',
-  SUCCESS = 'success'
+  DANGER   = 'danger',
+  SUCCESS  = 'success',
+  WARNING  = 'warning',
 }
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,8 @@ export class ModalAlertService {
     this.fieldsErrors = this.convertInListFieldsErrors(fields);
     this.showAlert(message, AlertType.DANGER, this.fieldsErrors, true);
   }
-  showALertSuccess(message: string) {
-    this.showAlert(message, AlertType.SUCCESS);
+  showALertWarning(message: string) {
+    this.showAlert(message, AlertType.WARNING);
   }
+
 }

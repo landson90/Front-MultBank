@@ -1,31 +1,40 @@
-<ol class="list-unstyled">
-  <li class="row no-gutters p-0">
-      <div *ngFor="let item of historicList" >
-          <a >
-            <div class="card border-light ml-4 mt-2">
-              <h4 class="card-header"><b>{{item?.transactionEnum | uppercase}}</b></h4>
-              <div class="card-block text-justify card-body">
-                <ol class="list-unstyled">
-                  <li> <b>Cliente</b> {{item?.client}}</li>
-                  <li> <b>Valor</b> {{item?.value  |  currency:'BRL'}}</li>
-                  <li> <b>Conta</b> {{item?.numberAccount}}</li>
-                  <li> <b>Data</b> {{item?.createAT | date: 'dd/MM/yyyy' }}</li>
+<div *ngIf="historicList.length != 0; else loading">
+  <ol class="list-unstyled">
+    <li class="row no-gutters p-0">
+        <div *ngFor="let item of historicList" >
+            <a >
+              <div class="card border-light ml-4 mt-2">
+                <h4 class="card-header"><b>{{item?.transactionEnum | uppercase}}</b></h4>
+                <div class="card-block text-justify card-body">
+                  <ol class="list-unstyled">
+                    <li> <b>Cliente</b> {{item?.client}}</li>
+                    <li> <b>Valor</b> {{item?.value  |  currency:'BRL'}}</li>
+                    <li> <b>Conta</b> {{item?.numberAccount}}</li>
+                    <li> <b>Data</b> {{item?.createAT | date: 'dd/MM/yyyy' }}</li>
 
-                  <li> <b>Hora</b> {{item?.createAT | date: 'hh:mm' }}</li>
-                </ol>
-              </div>
-          </div>
-          </a>
-      </div>
-  </li>
-</ol>
-<nav aria-label="Page navigation example " id="nav-page">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" (click)="previousPage(pageNow)">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">{{displayPageNumber}}</a></li>
-    <li class="page-item"><a class="page-link"(click)="nextPage(pageNow)">Next</a></li>
-  </ul>
-</nav>
+                    <li> <b>Hora</b> {{item?.createAT | date: 'hh:mm' }}</li>
+                  </ol>
+                </div>
+            </div>
+            </a>
+        </div>
+    </li>
+  </ol>
+
+  <nav aria-label="Page navigation example " id="nav-page">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" (click)="previousPage(pageNow)">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{displayPageNumber}}</a></li>
+      <li class="page-item"><a class="page-link"(click)="nextPage(pageNow)">Next</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+<ng-template #loading>
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw text-center"></i>
+  <h4 class="mt-2"><b>Carregando...</b></h4>
+</ng-template>
 
 
 

@@ -48,8 +48,14 @@ export class SignInComponent implements OnInit {
        .subscribe(() => {
           this.router.navigate(['home']);
        },
-       (() => {
-         this.alertModalService.showALertDanger("E-mail ou Password está incorreto !")
+       ((error) => {
+         let statusCodeError = error.status;
+         if(statusCodeError === 400) {
+           this.alertModalService.showALertDanger("E-mail ou Password está incorreto !");
+
+         } else {
+          this.alertModalService.showALertWarning("Serviço indisponivel !");
+         }
        })
        );
 
