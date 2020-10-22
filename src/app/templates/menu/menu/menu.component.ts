@@ -29,7 +29,9 @@ export class MenuComponent implements OnInit {
   cashOut() {
     this.router.navigate(["home/saque"]);
   }
-
+  transferOutAccount() {
+    this.router.navigate(["home/transferencia"]);
+  }
 
 
 }

@@ -10,6 +10,8 @@
                   <li> <b>Valor</b> {{item?.value  |  currency:'BRL'}}</li>
                   <li> <b>Conta</b> {{item?.numberAccount}}</li>
                   <li> <b>Data</b> {{item?.createAT | date: 'dd/MM/yyyy' }}</li>
+
+                  <li> <b>Hora</b> {{item?.createAT | date: 'hh:mm' }}</li>
                 </ol>
               </div>
           </div>

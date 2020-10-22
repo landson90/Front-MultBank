@@ -10,12 +10,14 @@ import { DepositComponent } from './deposit/deposit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateInitialModule } from '../templates/template-initial.module';
 import { CashOutComponent } from './cash-out/cash-out.component';
+import { TransferBetweenAccountsComponent } from './transfer-between-accounts/transfer-between-accounts.component';
 
 @NgModule({
   declarations: [
     HistoricComponent,
     DepositComponent,
     CashOutComponent,
+    TransferBetweenAccountsComponent,
 
   ],
   imports: [

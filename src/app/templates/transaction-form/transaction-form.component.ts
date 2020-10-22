@@ -9,7 +9,8 @@ import { UserService } from 'src/app/service/user/user.service';
 
 export enum TypeTransactionEnum {
   DEPOSITAR = 'DEPOSITAR',
-  SAQUE = 'SAQUE'
+  SAQUE = 'SAQUE',
+  TRANSFERENCIA = 'TRANSFERENCIA'
 }
 @Component({
   selector: 'app-transaction-form',
@@ -21,6 +22,7 @@ export class TransactionFormComponent implements OnInit {
   @Input() titleCard: string;
   @Input() btnTitle: string;
   @Input() typeTransactionForm: string;
+  @Input() isTransferActive: boolean;
 
   orderForm: FormGroup;
   clintUserAccount: ClientUser;

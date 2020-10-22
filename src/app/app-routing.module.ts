@@ -1,3 +1,4 @@
+import { TransferBetweenAccountsComponent } from './componente/transfer-between-accounts/transfer-between-accounts.component';
 import { DepositComponent } from './componente/deposit/deposit.component';
 
 import { LonginGuard } from './core/guard-router/login/login.guard';
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: "saque",
         component: CashOutComponent,
+      },
+      {
+        path: "transferencia",
+        component: TransferBetweenAccountsComponent,
       },
     ]
   },

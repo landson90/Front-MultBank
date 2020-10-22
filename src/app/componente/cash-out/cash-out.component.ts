@@ -13,10 +13,11 @@ import { UserService } from 'src/app/service/user/user.service';
 })
 export class CashOutComponent implements OnInit {
 
-  orderForm: FormGroup;
   clintUserAccount: ClientUser;
   titleCard = "Saque";
-  btnTitle = "Finalizar"
+  btnTitle = "Finalizar";
+  isTransferActive = false;
+
   constructor(
 
   ) { }

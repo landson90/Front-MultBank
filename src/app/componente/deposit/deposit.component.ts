@@ -14,11 +14,10 @@ import { UserService } from 'src/app/service/user/user.service';
 })
 export class DepositComponent implements OnInit {
 
-  orderForm: FormGroup;
   clintUserAccount: ClientUser;
-
   titleCard = "Depositar";
   btnTitle = "Finalizar";
+  isTransferActive = false;
 
   constructor() { }
 
