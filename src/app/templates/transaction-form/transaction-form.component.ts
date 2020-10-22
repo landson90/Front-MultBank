@@ -145,7 +145,6 @@ export class TransactionFormComponent implements OnInit {
     const accountTransfer = this.orderForm.get('accountOtherClient').value;
     this.accountService.show(accountTransfer).subscribe(
       (resp) => {
-        console.log(resp);
         this.anotherAccount = resp.account;
       },
       (error) => {
