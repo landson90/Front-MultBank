@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateInitialModule } from '../templates/template-initial.module';
 import { CashOutComponent } from './cash-out/cash-out.component';
 import { TransferBetweenAccountsComponent } from './transfer-between-accounts/transfer-between-accounts.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { TransferBetweenAccountsComponent } from './transfer-between-accounts/tr
     DepositComponent,
     CashOutComponent,
     TransferBetweenAccountsComponent,
-
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { TransferBetweenAccountsComponent } from './transfer-between-accounts/tr
     MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
-    TemplateInitialModule
+    TemplateInitialModule,
+    RouterModule
   ]
 })
 export class ComponenteInitialModule { }
