@@ -38,6 +38,9 @@ export class ModalAlertService {
     this.fieldsErrors = this.convertInListFieldsErrors(fields);
     this.showAlert(message, AlertType.DANGER, this.fieldsErrors, true);
   }
+  showALertSuccess(message: string) {
+    this.showAlert(message, AlertType.SUCCESS);
+  }
   showALertWarning(message: string) {
     this.showAlert(message, AlertType.WARNING);
   }

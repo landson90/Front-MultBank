@@ -6,9 +6,7 @@ import { RequestInterceptor } from './request.interceptor';
 import { SignModule } from './sign-in/sign.module';
 
 @NgModule({
-  declarations: [
-
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     SignModule,

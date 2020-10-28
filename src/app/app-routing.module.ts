@@ -1,6 +1,5 @@
 import { TransferBetweenAccountsComponent } from './componente/transfer-between-accounts/transfer-between-accounts.component';
 import { DepositComponent } from './componente/deposit/deposit.component';
-
 import { LonginGuard } from './core/guard-router/login/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,6 +9,7 @@ import { SignInComponent } from './core/sign-in/sign-in.component';
 import { SignUpComponent } from './core/sign-in/sign-up/sign-up.component';
 import { HistoricComponent } from './componente/historic/historic.component';
 import { CashOutComponent } from './componente/cash-out/cash-out.component';
+import { NotFoundPageComponent } from './componente/not-found-page/not-found-page.component';
 
 
 const routes: Routes = [
@@ -45,6 +45,10 @@ const routes: Routes = [
         component: TransferBetweenAccountsComponent,
       },
     ]
+  },
+  {
+    path: "**",
+    component: NotFoundPageComponent
   },
 
 ];
