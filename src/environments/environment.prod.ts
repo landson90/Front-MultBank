@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseURL: "https://app-multbank.herokuapp.com"
+  baseURL: "https://multbank-front-spa-angular.web.app"
 };

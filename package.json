@@ -2,9 +2,9 @@
   "name": "mult-bank-spa",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",
     "ng": "ng",
-    "start": "node serve.js",
+    "start": "http-server-spa dist/MultBank-spa index.html $PORT",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
