@@ -1,20 +1,11 @@
-.hedear {
-  display: flex;
-  align-items: center;
+.header-tittle {
+  color: #4DE29F;
+  font-size: 28px;
+  cursor: pointer;
 }
 
-.hedear a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+.header-span{
+  color: #185DB9;
 }
- .hedear .logo {
-   max-width: 28px;
- }
 
- .header-title {
-   padding-left: 125px;
- }
- .icone {
-   padding-left: 15px
- }
+

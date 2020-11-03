@@ -1,5 +1,5 @@
 .sidenav {
-  background-color:  #DE6262;
+  background-color: #D6FBC8;
   width: 200px;
 }
 
@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 .sidenav a :hover {
-  color: #ffff;
+  color:#D66C1B;
 }
 
 .sidenav i {
