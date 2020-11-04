@@ -26,7 +26,8 @@
         <div class="col-lg-12">
           <input
             class="form-control"
-            type="number"
+            type="text"
+            mask="separator.2" separatorLimit="1000"
             placeholder="Digite o valor do deposito"
             formControlName="valueTransaction"
             [ngClass]="{'is-invalid': orderForm.get('valueTransaction').errors?.required && (form.submitted || orderForm.get('valueTransaction').touched)}"
@@ -43,7 +44,7 @@
           <button
             type="button"
             (click)="persistenceTransactionForm()"
-            class="btn btn-outline-secondary btn-block"><b>Depositar</b></button>
+            class="btn btn-outline-secondary btn-block"><b>{{titleCard}}</b></button>
         </div>
       </div>
     </form>
