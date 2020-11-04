@@ -39,14 +39,14 @@ export class SignUpComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.min(6),
+          Validators.min(6)
         ]],
       cpf: [
         '',
         [
           Validators.required,
           Validators.min(11),
-         Validators.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)
+          Validators.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)
         ]],
       dateOfBirth: [
         '',
