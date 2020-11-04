@@ -27,8 +27,7 @@
           <input
             class="form-control"
             type="text"
-            mask="separator.0"
-            thousandSeparator=","
+            mask="separator.2" separatorLimit="1000000" thousandSeparator="."
             placeholder="Digite o valor do deposito"
             formControlName="valueTransaction"
             [ngClass]="{'is-invalid': orderForm.get('valueTransaction').errors?.required && (form.submitted || orderForm.get('valueTransaction').touched)}"
