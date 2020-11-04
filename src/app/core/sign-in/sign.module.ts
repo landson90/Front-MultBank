@@ -4,6 +4,8 @@ import { SignInComponent } from './sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateInitialModule } from './../../templates/template-initial.module';
+import { NgxMaskModule } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { TemplateInitialModule } from './../../templates/template-initial.module
     FormsModule,
     ReactiveFormsModule,
     TemplateInitialModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 export class SignModule { }

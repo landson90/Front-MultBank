@@ -29,6 +29,7 @@ export class HistoricComponent implements OnInit {
 
   constructorDisplay() {
     this.userService.getUserClientAccount().subscribe((resp) => {
+      console.log(resp);
       this.clientId = resp.clientId;
       this.historicZeroPage(this.clientId, 0);
     });

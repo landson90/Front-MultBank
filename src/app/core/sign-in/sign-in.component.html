@@ -14,11 +14,11 @@
         <h2 class="text-center">MultBank</h2>
         <form class="login-form" [formGroup]="orderFrom" #form="ngForm" (ngSubmit)="login()">
           <div class="form-group">
-            <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+            <label for="exampleInputEmail1" class="text-uppercase">E-mail</label>
             <input
               type="text"
               class="form-control"
-              placeholder=""
+              placeholder="Digite seu E-mail"
               formControlName="email"
               [ngClass]="{'is-invalid': orderFrom.get('email').errors?.required && (form.submitted || orderFrom.get('email').touched)}"
               >
@@ -32,7 +32,7 @@
             <input
               type="password"
               class="form-control"
-              placeholder=""
+              placeholder="Digite seu password"
               formControlName="password"
               [ngClass]="{'is-invalid': orderFrom.get('password').errors?.required && (form.submitted || orderFrom.get('password').touched)}"
               >

@@ -44,7 +44,7 @@
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">CPF</label>
             <input type="text" class="form-control" formControlName="cpf"
-              [ngClass]="{'is-invalid': orderForm.get('cpf').errors?.required && (form.submitted || orderForm.get('cpf').touched)} ">
+              [ngClass]="{'is-invalid': orderForm.get('cpf').errors?.required && (form.submitted || orderForm.get('cpf').touched)} " mask="000.000.000-00" >
             <app-v-message *ngIf="orderForm.get('cpf').errors?.required && (form.submitted || orderForm.get('cpf').touched)" text="Campo cpf é necessário"></app-v-message>
             <app-v-message *ngIf="orderForm.get('cpf').errors?.maxlength && (form.submitted || orderForm.get('cpf').touched)" text="Campo cpf deve conter 11 digitos">
             </app-v-message>
